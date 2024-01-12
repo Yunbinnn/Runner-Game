@@ -12,21 +12,28 @@ public class Runner : MonoBehaviour
     [SerializeField] RoadLine line;
     [SerializeField] float lerpSpd = 2f;
 
-    private static readonly float linePosDamp = 2f;
+    private readonly float linePosDamp = 2.25f;
 
-    Vector3 leftPos = Vector3.left * linePosDamp;
-    Vector3 midPos = Vector3.zero;
-    Vector3 rightPos = Vector3.right * linePosDamp;
+    private Vector3 midPos;
+    private Vector3 leftPos;
+    private Vector3 rightPos;
+
+    private void OnEnable()
+    {
+        InputManager.instance.action += Move;
+    }
 
     void Start()
     {
         line = RoadLine.MIDDLE;
+
+        midPos = Vector3.zero;
+        leftPos = Vector3.left * linePosDamp;
+        rightPos = Vector3.right * linePosDamp;
     }
 
     void Update()
     {
-        Move();
-
         Status();
     }
 
@@ -54,20 +61,24 @@ public class Runner : MonoBehaviour
         switch (line)
         {
             case RoadLine.LEFT:
-                Movement(-linePosDamp);
+                Movement(leftPos);
                 break;
             case RoadLine.MIDDLE:
-                Movement(0);
+                Movement(midPos);
                 break;
             case RoadLine.RIGHT:
-                Movement(linePosDamp);
+                Movement(rightPos);
                 break;
         }
     }
 
-    public void Movement(float position)
+    public void Movement(Vector3 position)
     {
-        transform.position = new Vector3(Mathf.Lerp(transform.localPosition.x,
-                                    position, lerpSpd * Time.deltaTime), 0, 0);
+        transform.position = Vector3.Lerp(transform.position, position, lerpSpd * Time.deltaTime);
+    }
+
+    private void OnDisable()
+    {
+        InputManager.instance.action -= Move;
     }
 }
