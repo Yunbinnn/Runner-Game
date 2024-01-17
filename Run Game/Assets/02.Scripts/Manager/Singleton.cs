@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    public static T instance
+    public static T Instance
     {
         get;
         private set;
@@ -10,9 +10,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = (T)FindObjectOfType(typeof(T));
+            Instance = (T)FindObjectOfType(typeof(T));
         }
         else
         {
@@ -20,6 +20,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(instance.gameObject);
+        DontDestroyOnLoad(Instance.gameObject);
     }
 }

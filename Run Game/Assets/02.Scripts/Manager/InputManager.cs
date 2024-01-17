@@ -10,6 +10,6 @@ public class InputManager : Singleton<InputManager>
         // 키 입력이 들어오지 않은 상태라면
         if (!Input.anyKey) return;
 
-        if (action != null) action.Invoke();
+        action?.Invoke();
     }
 }

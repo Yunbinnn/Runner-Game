@@ -17,16 +17,11 @@ public class Runner : MonoBehaviour
     private Vector3 midPos;
     private Vector3 leftPos;
     private Vector3 rightPos;
-
-    private void OnEnable()
-    {
-        InputManager.instance.action += Move;
-    }
-
+ 
     void Start()
     {
+        InputManager.Instance.action += Move;
         line = RoadLine.MIDDLE;
-
         midPos = Vector3.zero;
         leftPos = Vector3.left * linePosDamp;
         rightPos = Vector3.right * linePosDamp;
@@ -89,6 +84,6 @@ public class Runner : MonoBehaviour
 
     private void OnDisable()
     {
-        InputManager.instance.action -= Move;
+        InputManager.Instance.action -= Move;
     }
 }
