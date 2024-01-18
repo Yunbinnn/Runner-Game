@@ -901,9 +901,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnList: []
   spawnPos:
-  - {fileID: 1401932956}
-  - {fileID: 366102554}
-  - {fileID: 338290253}
+  - {fileID: 1401932957}
+  - {fileID: 366102555}
+  - {fileID: 338290254}
   vehicleObject:
   - {fileID: 186458, guid: 88c9792d12fc0574d93568b531a1917c, type: 3}
   - {fileID: 186458, guid: 6eb3226238a68784ab8cefb3822af05c, type: 3}
@@ -960,6 +960,9 @@ MonoBehaviour:
   - {fileID: 157538, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
   - {fileID: 157538, guid: a37b2602c9050a4469094841aeed030b, type: 3}
   - {fileID: 157538, guid: 8c211a32366f0534e81b8202e306210a, type: 3}
+  count: 0
+  random: 0
+  randomPos: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
