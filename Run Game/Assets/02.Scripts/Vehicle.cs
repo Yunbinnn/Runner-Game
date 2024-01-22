@@ -7,7 +7,7 @@ public class Vehicle : CollisionObject
 
     void Start()
     {
-        direction = Vector3.right;
+        direction = Vector3.back;
     }
 
     void Update()

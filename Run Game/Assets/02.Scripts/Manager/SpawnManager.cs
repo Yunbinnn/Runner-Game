@@ -8,13 +8,12 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] Transform[] spawnPos;
     [SerializeField] GameObject[] vehicleObject;
-    private GameObject[] childObject = new GameObject[2];
 
     [SerializeField] int count;
     [SerializeField] int random;
     [SerializeField] int randomPos;
+    int compare = -1;
     int disableCount;
-    int a = 0;
 
     void Start()
     {
@@ -31,11 +30,7 @@ public class SpawnManager : MonoBehaviour
     {
         for (int i = 0; i < vehicleObject.Length; i++)
         {
-            // vehicle 오브젝트가 활성화 되는 위치를 랜덤으로 설정합니다.
-            GameObject vehicle = Instantiate(vehicleObject[i], spawnPos[randomPos]);
-
-            // 랜덤으로 위치를 설정하는 변수를 선언합니다.
-            randomPos = Random.Range(0, spawnPos.Length);
+            GameObject vehicle = Instantiate(vehicleObject[i]);
 
             vehicle.SetActive(false);
 
@@ -43,56 +38,64 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    public bool FullVehicle()
+    {
+        for(int i = 0;i < spawnList.Count; i++)
+        {
+            if (!spawnList[i].activeSelf) return false;
+        }
+
+        return true;
+    }
+
     IEnumerator ActiceVehicle()
     {
         while (true)
         {
-            for (int a = 0; a < vehicleObject.Length - 53; a++)
+            for (int i = 0; i < Random.Range(1, 3); i++)
             {
                 random = Random.Range(0, vehicleObject.Length);
 
+                // 현재 게임 오브젝트가 활성화 되어 있는지 확인합니다.
                 while (spawnList[random].activeSelf)
                 {
-                    if (count++ >= vehicleObject.Length)
+                    if (FullVehicle()) // 현재 리스트에 있는 모든 게임 오브젝트가 활성화 되어있는지 확인합니다.
                     {
-                        CheckDisableVehicle();
+                        // 모든 게임 오브젝트가 활성화되어 있다면 게임 오브젝트를 새로 생성한 다음
+                        // vehicle을 리스트에 넣어줍니다.
+                        GameObject vehicle = Instantiate(vehicleObject[Random.Range(0, vehicleObject.Length)]);
 
-                        if(count >= vehicleObject.Length)
-                            yield break;
+                        vehicle.SetActive(false);
+
+                        spawnList.Add(vehicle);
                     }
 
-                    random = (random + 1) % vehicleObject.Length;
+                    // 현재 리스트에 있는 모든 게임 오브젝트가 활성화 되어 있지 않다면
+                    // random 변수의 값을 +1을 해서 다시 검색합니다.
+                    random = (random + 1) % spawnList.Count;
                 }
 
-                childObject[a] = spawnList[random];
-            }
+                // 랜덤으로 위치를 설정하는 변수를 선언합니다.
+                randomPos = Random.Range(0, spawnPos.Length);
 
-            if (childObject[a].transform.parent != childObject[a + 1].transform.parent)
-            {
-                for (int i = 0; i < childObject.Length; i++)
+                // 만약에 내가 이전에 저장되어 있던 변수와 다시 뽑은 randomPos의 값이 
+                // compare변수와 일치한다면 중복이 되지 않도록 계산합니다.
+                if(compare==randomPos)
                 {
-                    // 랜덤으로 설정된 vehicle 오브젝트를 활성화 합니다.
-                    childObject[i].SetActive(true);
+                    randomPos = (randomPos + 1) % spawnPos.Length;
                 }
+
+                // compare 변수와 random으로 설정된 변수의 값을 넣어줍니다.
+                compare = randomPos;
+
+                // vehicle 오브젝트가 활성화 되는 위치를 랜덤으로 설정합니다.
+                spawnList[random].transform.position = spawnPos[randomPos].position;
+
+                // 랜덤으로 설정된 vehicle 오브젝트를 활성화 합니다.
+                spawnList[random].SetActive(true);
             }
-            else childObject[Random.Range(0, childObject.Length)].SetActive(true);
 
-            yield return new WaitForSeconds(2f);
+            yield return CoroutineCache.waitForSeconds(2.5f);
         }
-    }
-
-    private void CheckDisableVehicle()
-    {
-        for (int j = 0; j < vehicleObject.Length; j++)
-        {
-            if (!vehicleObject[j].activeSelf)
-            {
-                disableCount++;
-            }
-        }
-
-        count -= disableCount;
-
-        StartCoroutine(ActiceVehicle());
     }
 }

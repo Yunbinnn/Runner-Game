@@ -74,9 +74,7 @@ public class Runner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        CollisionObject collision = other.GetComponent<CollisionObject>();
-
-        if(collision != null)
+        if(other.TryGetComponent<CollisionObject>(out var collision))
         {
             collision.Activate(this);
         }
