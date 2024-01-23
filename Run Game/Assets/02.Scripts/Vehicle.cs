@@ -3,10 +3,17 @@ using UnityEngine;
 public class Vehicle : CollisionObject
 {
     [SerializeField] Vector3 direction;
-    [SerializeField] float speed = 5.0f;
+    private float speed;
+
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
 
     void Start()
     {
+        Speed = Random.Range(5, 15);
         direction = Vector3.back;
     }
 
