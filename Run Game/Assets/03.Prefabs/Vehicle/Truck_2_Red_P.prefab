@@ -77,9 +77,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4599910163384594034}
     m_Modifications:
+    - target: {fileID: 105722, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 119338, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 137864, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 138210, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142108, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142526, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143124, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 157538, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
       propertyPath: m_Name
       value: Truck_2_Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 157538, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 165590, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 191320, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 456038, guid: effd6c573175d114bacfddf1faa1d4a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -146,6 +186,10 @@ PrefabInstance:
     - target: {fileID: 3682647091709111637, guid: c410a2131dae4c449a8040d277b83ca9, type: 3}
       propertyPath: m_Name
       value: Vehicle Detect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682647091709111637, guid: c410a2131dae4c449a8040d277b83ca9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5236644348558979757, guid: c410a2131dae4c449a8040d277b83ca9, type: 3}
       propertyPath: m_LocalScale.y

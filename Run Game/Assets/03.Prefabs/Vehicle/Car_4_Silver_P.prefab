@@ -85,6 +85,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle Detect
       objectReference: {fileID: 0}
+    - target: {fileID: 3682647091709111637, guid: c410a2131dae4c449a8040d277b83ca9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5236644348558979757, guid: c410a2131dae4c449a8040d277b83ca9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -143,9 +147,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3707372999752659438}
     m_Modifications:
+    - target: {fileID: 106428, guid: 9f14ffa559e6d214db9b0ec960921311, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 115726, guid: 9f14ffa559e6d214db9b0ec960921311, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 140570, guid: 9f14ffa559e6d214db9b0ec960921311, type: 3}
       propertyPath: m_Name
       value: Car_4_Silver
+      objectReference: {fileID: 0}
+    - target: {fileID: 140570, guid: 9f14ffa559e6d214db9b0ec960921311, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 168118, guid: 9f14ffa559e6d214db9b0ec960921311, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 173316, guid: 9f14ffa559e6d214db9b0ec960921311, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 434314, guid: 9f14ffa559e6d214db9b0ec960921311, type: 3}
       propertyPath: m_LocalPosition.x

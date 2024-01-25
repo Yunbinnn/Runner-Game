@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Event Collider
   - Water
   - UI
-  - 
-  - 
+  - Detector
+  - Vehicle
   - 
   - 
   - 

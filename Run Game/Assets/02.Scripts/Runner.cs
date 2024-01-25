@@ -13,13 +13,15 @@ public class Runner : MonoBehaviour
 
     [SerializeField] RoadLine line;
     [SerializeField] float lerpSpd = 2f;
+    [SerializeField] LeftCollider leftCollider;
+    [SerializeField] RightCollider rightCollider;
 
     private readonly float linePosDamp = 2.25f;
 
     private Vector3 midPos;
     private Vector3 leftPos;
     private Vector3 rightPos;
- 
+
     void Start()
     {
         InputManager.Instance.action += Move;
@@ -38,8 +40,11 @@ public class Runner : MonoBehaviour
     {
         if (!GameManager.Instance.state) return;
 
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            if (leftCollider.LeftCheck) return;
+
             if (line > RoadLine.LEFT)
             {
                 line--;
@@ -48,6 +53,8 @@ public class Runner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            if(rightCollider.RightCheck) return;
+
             if (line < RoadLine.RIGHT)
             {
                 line++;
@@ -78,7 +85,7 @@ public class Runner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<CollisionObject>(out var collision))
+        if (other.TryGetComponent<CollisionObject>(out var collision))
         {
             collision.Activate(this);
         }
