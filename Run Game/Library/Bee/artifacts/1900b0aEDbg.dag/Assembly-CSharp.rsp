@@ -370,6 +370,8 @@
 "Assets/02.Scripts/CollisionObject/VehicleDetector.cs"
 "Assets/02.Scripts/etc/CoroutineCache.cs"
 "Assets/02.Scripts/MainMenu.cs"
+"Assets/02.Scripts/Manager/AudioManager.cs"
+"Assets/02.Scripts/Manager/GameManager.cs"
 "Assets/02.Scripts/Manager/InputManager.cs"
 "Assets/02.Scripts/Manager/ResourcesManager.cs"
 "Assets/02.Scripts/Manager/RoadManager.cs"

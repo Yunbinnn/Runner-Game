@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class RoadManager : MonoBehaviour
 {
-    [SerializeField] float speed = 0.5f;
     [SerializeField] float offset = 25.0f;
     [SerializeField] List<GameObject> roadList;
 
@@ -14,9 +13,11 @@ public class RoadManager : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.state) return;
+
         for (int i = 0; i < roadList.Count; i++)
         {
-            roadList[i].transform.Translate(speed * Time.deltaTime * Vector3.back);
+            roadList[i].transform.Translate(GameManager.Instance.speed * Time.deltaTime * Vector3.back);
         }
     }
 

@@ -50,7 +50,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator ActiceVehicle()
     {
-        while (true)
+        while (GameManager.Instance.state)
         {
             for (int i = 0; i < Random.Range(1, 3); i++)
             {
