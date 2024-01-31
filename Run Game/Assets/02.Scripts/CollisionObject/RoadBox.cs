@@ -18,6 +18,10 @@ public class RoadBox : CollisionObject
 
         runner.animator.speed = Mathf.Clamp(runner.animator.speed, 1f, GameManager.Instance.limit);
 
+        DataManager.Instance.data.score += 10;
+
+        DataManager.Instance.Save();
+
         callBack.Invoke();
 
         GameManager.Instance.IncreaseSpeed();

@@ -95,7 +95,7 @@ public class SpawnManager : MonoBehaviour
                 spawnList[random].SetActive(true);
             }
 
-            yield return CoroutineCache.waitForSeconds(2.5f);
+            yield return CoroutineCache.waitForSeconds(LevelManager.spawnTime);
         }
     }
 }
