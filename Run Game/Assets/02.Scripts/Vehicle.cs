@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Vehicle : CollisionObject
+public class Vehicle : MonoBehaviour
 {
     [SerializeField] Vector3 direction;
     private float speed;
@@ -30,12 +30,5 @@ public class Vehicle : CollisionObject
         if (!GameManager.Instance.state) return;
 
         transform.Translate(speed * Time.deltaTime * direction);
-    }
-
-    public override void Activate(Runner runner)
-    {
-        runner.animator.Play("Die");
-
-        GameManager.Instance.GameOver();
     }
 }

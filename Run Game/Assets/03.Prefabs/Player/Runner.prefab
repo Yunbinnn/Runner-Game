@@ -1343,7 +1343,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5712f54b559f85a41a898af9a937f4f0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1363,8 +1363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61c4583f90a56f40be9fe02ffb5f7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1717402721717733880}
   line: 0
   lerpSpd: 4.5
+  leftCollider: {fileID: 0}
+  rightCollider: {fileID: 0}
 --- !u!54 &2176760761531165654
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -12,9 +12,8 @@ public class Runner : MonoBehaviour
     public Animator animator;
 
     [SerializeField] RoadLine line;
+    [SerializeField] RoadLine previousRoadline;
     [SerializeField] float lerpSpd = 2f;
-    [SerializeField] LeftCollider leftCollider;
-    [SerializeField] RightCollider rightCollider;
 
     private readonly float linePosDamp = 2.25f;
 
@@ -24,11 +23,13 @@ public class Runner : MonoBehaviour
 
     void Start()
     {
-        InputManager.Instance.action += Move;
-        line = RoadLine.MIDDLE;
         midPos = Vector3.zero;
         leftPos = Vector3.left * linePosDamp;
         rightPos = Vector3.right * linePosDamp;
+
+        line = RoadLine.MIDDLE;
+        previousRoadline = RoadLine.MIDDLE;
+        InputManager.Instance.action += Move;
     }
 
     void Update()
@@ -40,23 +41,26 @@ public class Runner : MonoBehaviour
     {
         if (!GameManager.Instance.state) return;
 
-
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (leftCollider.LeftCheck) return;
-
             if (line > RoadLine.LEFT)
             {
+                animator.Play("Left Avoid");
+
+                previousRoadline = line;
+
                 line--;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if(rightCollider.RightCheck) return;
-
             if (line < RoadLine.RIGHT)
             {
+                animator.Play("Right Avoid");
+
+                previousRoadline = line;
+
                 line++;
             }
         }
@@ -66,16 +70,18 @@ public class Runner : MonoBehaviour
     {
         switch (line)
         {
-            case RoadLine.LEFT:
-                Movement(leftPos);
+            case RoadLine.LEFT: Movement(leftPos);
                 break;
-            case RoadLine.MIDDLE:
-                Movement(midPos);
+            case RoadLine.MIDDLE: Movement(midPos);
                 break;
-            case RoadLine.RIGHT:
-                Movement(rightPos);
+            case RoadLine.RIGHT: Movement(rightPos);
                 break;
         }
+    }
+
+    public void RevertPosition()
+    {
+        line = previousRoadline;
     }
 
     public void Movement(Vector3 position)
