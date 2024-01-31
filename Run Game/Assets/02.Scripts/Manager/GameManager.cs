@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class GameManager : Singleton<GameManager>
 {
     public float limit = 45f;
